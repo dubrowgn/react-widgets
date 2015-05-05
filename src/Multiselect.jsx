@@ -178,7 +178,7 @@ var Multiselect = React.createClass({
             value={this.props.searchTerm}
             disabled={this.props.disabled === true}
             readOnly={this.props.readOnly === true}
-            placeholder={this._placeholder()}
+            placeholder={this.props.placeholder || ''}
             onKeyDown={this._searchKeyDown}
             onKeyUp={this._searchgKeyUp}
             onChange={this._typing}
@@ -410,12 +410,6 @@ var Multiselect = React.createClass({
     // if there is an exact match on textFields: "john" => { name: "john" }, don't show
     return !this._data().some( v => this._dataText(v) === text) 
         && !this.state.dataItems.some( v => this._dataText(v) === text) 
-  },
-
-  _placeholder(){
-    return (this.props.value || []).length
-      ? ''
-      : (this.props.placeholder || '')
   }
 
 })
